@@ -16,5 +16,5 @@
 } */
 
 .animate-marquee {
-  animation: marquee 5s linear infinite !important;
+  animation: marquee 500000ms linear infinite ;
 }
