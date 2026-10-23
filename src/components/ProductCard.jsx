@@ -31,10 +31,30 @@ const ProductCard = ({ data }) => {
         <h2 className="text-[17px] font-medium">আজকের দাম</h2>
 
         <div className="flex justify-between items-center">
-          <h2 className="text-[20px] font-bold">{data.today.toLocaleString("bn-BD")} <span className="text-[16px] font-medium">টাকা</span></h2>
-          <div className="text-red-500 bg-gray-100 px-2 py-1.25 text-[14px] rounded-full">
-            <span>▲</span>
-            <span>{data.change.pct.toLocaleString("bn-BD")}%</span>
+          <h2 className="text-[20px] font-bold">
+            {data.today.toLocaleString("bn-BD")}{" "}
+            <span className="text-[16px] font-medium">টাকা</span>
+          </h2>
+          <div className=" bg-gray-100 px-2 py-1.25 text-[14px] rounded-full">
+            {data.change.dir === "up" ? (
+              <span className="text-red-500">▲</span>
+            ) : data.change.dir === "down" ? (
+              <span className="text-green-500 pt-1 ">▼</span>
+            ) : (
+              ""
+            )}
+
+            {data.change.dir === "flat" ? (
+              ""
+            ) : data.change.dir === "up" ? (
+              <span className="text-red-500">
+                {Math.abs(data.change.pct).toLocaleString("bn-BD")}%
+              </span>
+            ) : data.change.dir === "down" ? (
+              <span className="text-green-700 ">
+                {Math.abs(data.change.pct).toLocaleString("bn-BD")}%
+              </span>
+            ) : null}
           </div>
         </div>
       </div>
