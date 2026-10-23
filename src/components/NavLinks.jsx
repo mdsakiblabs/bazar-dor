@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const NavLinks = async() => {
@@ -9,10 +10,14 @@ const NavLinks = async() => {
         <div className='max-w-270 mx-auto flex items-center gap-8'>
             {data.map((elem,ind)=>{
                 return (
-                    <div key={ind} className='flex cursor-pointer'>
+                    <Link href={`/category/${elem.id}`} key={ind}>
+                    
+                    <div  className='flex cursor-pointer'>
                         <span>{elem.icon}</span>
                         <h2 className='font-semibold '>{elem.nameBn}</h2>
                     </div>
+                    
+                    </Link>
                 )
             })}
         </div>
