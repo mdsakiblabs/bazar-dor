@@ -1,5 +1,6 @@
 import Hero from '@/components/HompageComponents/Hero'
 import PriceHighSection from '@/components/HompageComponents/PriceHighSection'
+import PriceLowSection from '@/components/HompageComponents/PriceLowSection'
 import React from 'react'
 
 const page = async() => {
@@ -17,6 +18,7 @@ const page = async() => {
     <div>
      <Hero/>
      <PriceHighSection data={highPriceProducts}/>
+     <PriceLowSection data={lowPriceProducts}/>
     </div>
   )
 }
