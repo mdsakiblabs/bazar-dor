@@ -44,9 +44,7 @@ const ProductCard = ({ data }) => {
               ""
             )}
 
-            {data.change.dir === "flat" ? (
-              ""
-            ) : data.change.dir === "up" ? (
+            { data.change.dir === "up" ? (
               <span className="text-red-500">
                 {Math.abs(data.change.pct).toLocaleString("bn-BD")}%
               </span>
@@ -54,7 +52,7 @@ const ProductCard = ({ data }) => {
               <span className="text-green-700 ">
                 {Math.abs(data.change.pct).toLocaleString("bn-BD")}%
               </span>
-            ) : null}
+            ) : <span>—{" "+data.change.pct}.0%</span>}
           </div>
         </div>
       </div>

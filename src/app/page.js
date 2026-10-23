@@ -1,3 +1,4 @@
+import AllProductSection from '@/components/HompageComponents/AllProductSection'
 import Hero from '@/components/HompageComponents/Hero'
 import PriceHighSection from '@/components/HompageComponents/PriceHighSection'
 import PriceLowSection from '@/components/HompageComponents/PriceLowSection'
@@ -19,6 +20,7 @@ const page = async() => {
      <Hero/>
      <PriceHighSection data={highPriceProducts}/>
      <PriceLowSection data={lowPriceProducts}/>
+     <AllProductSection data={data} length={data.length}/>
     </div>
   )
 }
