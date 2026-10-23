@@ -2,6 +2,9 @@ import React from 'react'
 import ProductCard from '../ProductCard'
 
 const PriceHighSection = ({data}) => {
+ 
+  const topSixProduct = [...data].sort((a,b)=>b.change.pct - a.change.pct).slice(0,6)
+ 
   return (
     <div className='w-full mt-15'>
       <div className='max-w-270 mx-auto'>
@@ -13,7 +16,7 @@ const PriceHighSection = ({data}) => {
 
         {/* cards */}
         <div className='grid grid-cols-3 gap-4'>
-            {data.map((elem,ind)=>{
+            {topSixProduct.map((elem,ind)=>{
                 return <ProductCard data={elem} key={ind}/>
             })}
             

@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 const ProductCard = ({ data }) => {
-  console.log(data);
+  
   return (
     <div className="border border-gray-300 rounded-2xl p-3 cursor-pointer">
       <div className="flex gap-2  items-center">
