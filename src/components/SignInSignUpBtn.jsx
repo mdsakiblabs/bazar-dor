@@ -1,7 +1,19 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
+import DisplayingUserDataAfterLogIn from "./DisplayingUserDataAfterLogIn";
+
 const SignInSignUpBtn = () => {
-  return (
+  const { data: session } = authClient.useSession();
+  
+  const user = session?.user;
+  
+
+  return user ? (
+    <DisplayingUserDataAfterLogIn user={user}/>
+  ) : (
     <div className="flex gap-5">
       <button className="text-[18px] font-semibold cursor-pointer">
         সাইন ইন
