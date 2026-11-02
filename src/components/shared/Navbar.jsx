@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import SignInSignUpBtn from "../SignInSignUpBtn";
 
 const Navbar = () => {
   const date = new Date().toLocaleDateString("bn-BD", {
@@ -25,18 +26,8 @@ const Navbar = () => {
         </div>
       </div>
 
-        {/* right side buttons */}
-      <div className="flex gap-5">
-        <button className="text-[18px] font-semibold cursor-pointer">
-          সাইন ইন
-        </button>
-
-        <Link href="/sign-up">
-        <button className="px-3 py-1 rounded bg-green-700 text-white text-[18px] font-semibold cursor-pointer">
-          সাইন আপ
-        </button>
-        </Link>
-      </div>
+      {/* right side buttons */}
+      <SignInSignUpBtn />
     </div>
   );
 };
