@@ -3,10 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
 
 const SignUpPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [image, setImage] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -29,12 +31,13 @@ const SignUpPage = () => {
         name,
         email,
         password,
+        image,
         callbackURL: "/",
       });
 
       if (error) {
         setMessage(error.message);
-        console.log(error)
+        console.log(error);
         return;
       }
 
@@ -108,6 +111,21 @@ const SignUpPage = () => {
               required
               autoComplete="email"
               placeholder="you@example.com"
+              className="w-full rounded-lg border border-[#dfe8df] bg-transparent px-3 py-2.5 text-sm outline-none transition focus:border-green-700 focus:ring-1 focus:ring-green-700"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="image" className="mb-1.5 block text-sm font-sans">
+              ImageURL <span className="text-gray-500">(optional)</span> 
+            </label>
+
+            <input
+              id="image"
+              type="url"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+              placeholder="input your image"
               className="w-full rounded-lg border border-[#dfe8df] bg-transparent px-3 py-2.5 text-sm outline-none transition focus:border-green-700 focus:ring-1 focus:ring-green-700"
             />
           </div>
