@@ -7,6 +7,8 @@ const SignInPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [socialLoading, setSocialLoading] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log({ email, password });
@@ -23,6 +25,14 @@ const SignInPage = () => {
     if (error) {
       setErrorMessage(error.message);
     }
+  };
+
+  const handleSocialSignIn = async (provider) => {
+    setSocialLoading(provider);
+    const data = await authClient.signIn.social({
+      provider,
+    });
+    console.log(data);
   };
   return (
     <main className="flex min-h-screen flex-col items-center bg-[#f0f5f0] px-4 py-5 text-[#26352b] sm:py-8">
@@ -89,6 +99,7 @@ const SignInPage = () => {
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
           <button
             type="button"
+            onClick={() => handleSocialSignIn("google")}
             className="flex items-center justify-center gap-2 rounded-lg border border-[#dfe8df] px-2 py-2.5 text-sm font-medium transition hover:bg-[#f0f5f0] disabled:opacity-60"
           >
             <svg viewBox="0 0 48 48" className="h-4 w-4 shrink-0">
@@ -110,24 +121,23 @@ const SignInPage = () => {
               />
             </svg>
 
-            {/* {socialLoading === "google"
+            {socialLoading === "google"
               ? "অপেক্ষা করো..."
-              : "Google দিয়ে চালিয়ে যান"} */}
+              : "Google দিয়ে চালিয়ে যান"}
           </button>
 
           <button
             type="button"
-            // onClick={() => handleSocialSignIn("github")}
-            // disabled={loading || socialLoading !== ""}
+            onClick={() => handleSocialSignIn("github")}
             className="flex items-center justify-center gap-2 rounded-lg border border-[#dfe8df] px-2 py-2.5 text-sm font-medium transition hover:bg-[#f0f5f0] disabled:opacity-60"
           >
             <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 fill-current">
               <path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.1c-3.1.68-3.76-1.32-3.76-1.32-.5-1.29-1.24-1.63-1.24-1.63-1.01-.69.08-.68.08-.68 1.12.08 1.7 1.15 1.7 1.15.99 1.69 2.6 1.2 3.23.92.1-.72.39-1.2.7-1.48-2.47-.28-5.06-1.24-5.06-5.5 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.41.11-2.95 0 0 .94-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.11-1.44 3.05-1.14 3.05-1.14.61 1.54.23 2.67.11 2.95.72.78 1.15 1.78 1.15 3 0 4.27-2.59 5.22-5.07 5.5.4.35.75 1.02.75 2.06v3.08c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z" />
             </svg>
 
-            {/* {socialLoading === "github"
+            {socialLoading === "github"
               ? "অপেক্ষা করো..."
-              : "GitHub দিয়ে চালিয়ে যান"} */}
+              : "GitHub দিয়ে চালিয়ে যান"}
           </button>
         </div>
 
