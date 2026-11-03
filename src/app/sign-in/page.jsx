@@ -4,7 +4,10 @@ import Link from "next/link";
 import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
+import { useSearchParams } from "next/navigation";
 const SignInPage = () => {
+  const searchParams = useSearchParams();
+  const callbackURL = searchParams.get("callbackURL") || "/";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -16,7 +19,7 @@ const SignInPage = () => {
     const { data, error } = await authClient.signIn.email({
       email,
       password,
-      callbackURL: "/",
+      callbackURL,
     });
 
     if (data) {
@@ -30,16 +33,15 @@ const SignInPage = () => {
 
   const handleSocialSignIn = async (provider) => {
     setSocialLoading(provider);
+
     const { data, error } = await authClient.signIn.social({
       provider,
+      callbackURL,
     });
-
-    if (data) {
-      toast.success("Sign In Successful");
-    }
 
     if (error) {
       toast.error(error.message);
+      setSocialLoading("");
     }
   };
   return (
@@ -152,8 +154,7 @@ const SignInPage = () => {
         <p className="mt-4 text-center text-sm">
           নতুন অ্যাকাউন্ট তৈরি করতে চান?{" "}
           <Link
-            href="/sign-up"
-            className="font-medium text-[#07883e] hover:underline"
+            href={`/sign-up?callbackURL=${encodeURIComponent(callbackURL)}`}
           >
             সাইন আপ করুন
           </Link>

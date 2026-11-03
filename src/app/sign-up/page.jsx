@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
-
+import { useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
 
 const SignUpPage = () => {
@@ -15,6 +15,9 @@ const SignUpPage = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [socialLoading, setSocialLoading] = useState("");
+  const searchParams = useSearchParams();
+
+  const callbackURL = searchParams.get("callbackURL") || "/";
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -28,25 +31,25 @@ const SignUpPage = () => {
     setLoading(true);
 
     try {
-      const {data, error } = await authClient.signUp.email({
+      const { data, error } = await authClient.signUp.email({
         name,
         email,
         password,
         image,
-        callbackURL: "/",
+        callbackURL,
       });
 
-      if(data){
-        toast.success('Sign Up Successful')
+      if (data) {
+        toast.success("Sign Up Successful");
       }
 
       if (error) {
         setMessage(error.message);
-        toast.error(error.message)
+        toast.error(error.message);
         return;
       }
 
-      window.location.href = "/";
+      window.location.href = callbackURL;
     } catch {
       setMessage("অ্যাকাউন্ট তৈরি করা যায়নি। আবার চেষ্টা করো।");
     } finally {
@@ -59,17 +62,17 @@ const SignUpPage = () => {
     setSocialLoading(provider);
 
     try {
-      const {data, error } = await authClient.signIn.social({
+      const { data, error } = await authClient.signIn.social({
         provider,
-        callbackURL: "/",
+        callbackURL,
       });
 
-      if(data){
-        toast.success('Sign Up Successful')
+      if (data) {
+        toast.success("Sign Up Successful");
       }
       if (error) {
         setMessage(error.message);
-        toast.error(error.message)
+        toast.error(error.message);
         setSocialLoading("");
       }
     } catch {
@@ -126,7 +129,7 @@ const SignUpPage = () => {
 
           <div>
             <label htmlFor="image" className="mb-1.5 block text-sm font-sans">
-              ImageURL <span className="text-gray-500">(optional)</span> 
+              ImageURL <span className="text-gray-500">(optional)</span>
             </label>
 
             <input
@@ -230,7 +233,6 @@ const SignUpPage = () => {
           <button
             type="button"
             onClick={() => handleSocialSignUp("github")}
-            
             className="flex items-center justify-center gap-2 rounded-lg border border-[#dfe8df] px-2 py-2.5 text-sm font-medium transition hover:bg-[#f0f5f0] disabled:opacity-60"
           >
             <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 fill-current">

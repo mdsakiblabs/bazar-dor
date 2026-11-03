@@ -7,7 +7,6 @@ const page = async ({ params }) => {
     `https://openapi.programming-hero.com/api/bazardor/products?category=${id}`,
   );
   const data = await res.json();
-  console.log(data.length);
 
   return (
     <div className="parent w-full mt-10">
