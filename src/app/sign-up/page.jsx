@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
-import { redirect } from "next/navigation";
+
+import toast from "react-hot-toast";
 
 const SignUpPage = () => {
   const [name, setName] = useState("");
@@ -27,7 +28,7 @@ const SignUpPage = () => {
     setLoading(true);
 
     try {
-      const { error } = await authClient.signUp.email({
+      const {data, error } = await authClient.signUp.email({
         name,
         email,
         password,
@@ -35,9 +36,13 @@ const SignUpPage = () => {
         callbackURL: "/",
       });
 
+      if(data){
+        toast.success('Sign Up Successful')
+      }
+
       if (error) {
         setMessage(error.message);
-        console.log(error);
+        toast.error(error.message)
         return;
       }
 
@@ -54,13 +59,17 @@ const SignUpPage = () => {
     setSocialLoading(provider);
 
     try {
-      const { error } = await authClient.signIn.social({
+      const {data, error } = await authClient.signIn.social({
         provider,
         callbackURL: "/",
       });
 
+      if(data){
+        toast.success('Sign Up Successful')
+      }
       if (error) {
         setMessage(error.message);
+        toast.error(error.message)
         setSocialLoading("");
       }
     } catch {
@@ -221,7 +230,7 @@ const SignUpPage = () => {
           <button
             type="button"
             onClick={() => handleSocialSignUp("github")}
-            disabled={loading || socialLoading !== ""}
+            
             className="flex items-center justify-center gap-2 rounded-lg border border-[#dfe8df] px-2 py-2.5 text-sm font-medium transition hover:bg-[#f0f5f0] disabled:opacity-60"
           >
             <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 fill-current">

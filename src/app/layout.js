@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import NavLinks from "@/components/NavLinks";
 import AllProductsMarquee from "@/components/shared/AllProductsMarquee";
+import { Toaster } from "react-hot-toast";
 
 const notoSerifBengali = Noto_Serif_Bengali({
   subsets: ["latin", "bengali"],
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
           <NavLinks />
           <AllProductsMarquee />
           {children}
+          <Toaster/>
         </main>
       </body>
     </html>

@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
 const SignInPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,28 +12,35 @@ const SignInPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ email, password });
+
     const { data, error } = await authClient.signIn.email({
       email,
       password,
       callbackURL: "/",
     });
 
-    // if (data) {
-    //   console.log(data);
-    // }
+    if (data) {
+      toast.success("Sign in Successful");
+    }
 
     if (error) {
-      setErrorMessage(error.message);
+      toast.error(error.message);
     }
   };
 
   const handleSocialSignIn = async (provider) => {
     setSocialLoading(provider);
-    const data = await authClient.signIn.social({
+    const { data, error } = await authClient.signIn.social({
       provider,
     });
-    console.log(data);
+
+    if (data) {
+      toast.success("Sign In Successful");
+    }
+
+    if (error) {
+      toast.error(error.message);
+    }
   };
   return (
     <main className="flex min-h-screen flex-col items-center bg-[#f0f5f0] px-4 py-5 text-[#26352b] sm:py-8">
