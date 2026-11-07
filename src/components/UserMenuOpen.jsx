@@ -1,5 +1,6 @@
 import React from "react";
 import { authClient } from "@/lib/auth-client";
+import Link from "next/link";
 const UserMenuOpen = ({ user }) => {
   async function handleSignOut() {
     await authClient.signOut();
@@ -10,7 +11,9 @@ const UserMenuOpen = ({ user }) => {
         <h1 className="text-xl  font-semibold">{user.name}</h1>
         <h2 className="text-[15px] text-gray-500">{user.email}</h2>
       </div>
+      <Link href="/my-profile">
       <p className="text-gray-700 cursor-pointer">👤 আমার প্রোফাইল</p>
+      </Link>
       <button className="text-start cursor-pointer" onClick={handleSignOut}>
         <span className="text-red-600 mr-1">↩</span>সাইন আউট
       </button>
