@@ -4,6 +4,7 @@ import Navbar from "@/components/shared/Navbar";
 import NavLinks from "@/components/NavLinks";
 import AllProductsMarquee from "@/components/shared/AllProductsMarquee";
 import { Toaster } from "react-hot-toast";
+import Footer from "@/components/shared/Footer";
 
 const notoSerifBengali = Noto_Serif_Bengali({
   subsets: ["latin", "bengali"],
@@ -20,13 +21,14 @@ export default function RootLayout({ children }) {
       lang="bn"
       className={`${notoSerifBengali.className}  h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <main>
+      <body className="min-h-screen flex flex-col bg-[#F3FBF4]">
+        <main className="flex-1 flex flex-col">
           <Navbar />
           <NavLinks />
           <AllProductsMarquee />
           {children}
-          <Toaster/>
+          <Toaster />
+          <Footer />
         </main>
       </body>
     </html>

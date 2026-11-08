@@ -66,7 +66,7 @@ const ProfilePage = () => {
   // Loading State
   if (isPending) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#f0f5f0]">
+      <main className="flex min-h-screen items-center justify-center bg-[#F3FBF4]">
         <p className="text-sm text-gray-500">প্রোফাইল লোড হচ্ছে...</p>
       </main>
     );
@@ -79,7 +79,7 @@ const ProfilePage = () => {
   }
 
   return (
-    <main className="min-h-screen bg-[#f0f5f0] px-4 py-8 sm:px-6 md:py-10">
+    <main className="min-h-screen bg-[#F3FBF4] px-4 py-8 sm:px-6 md:py-10">
       <div className="mx-auto max-w-5xl">
         {/* Page Heading */}
         <div className="mb-6">

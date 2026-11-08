@@ -99,7 +99,7 @@ const Detailspage = async ({ params }) => {
   ];
 
   return (
-    <main className="min-h-screen bg-[#f0f5f0] px-3 py-5 sm:px-5 sm:py-7 md:px-8">
+    <main className="min-h-screen bg-[#F3FBF4] px-3 py-5 sm:px-5 sm:py-7 md:px-8">
       <div className="mx-auto max-w-6xl space-y-4">
         {/* Product Overview */}
         <section className="flex flex-col gap-4 rounded-xl border border-gray-100 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:p-5 md:p-6">

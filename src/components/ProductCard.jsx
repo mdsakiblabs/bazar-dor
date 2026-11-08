@@ -6,7 +6,7 @@ const ProductCard = ({ data }) => {
   
   return (
     <Link href={`/details/${data.id}`}>
-    <div className="border border-gray-300 rounded-2xl p-3 cursor-pointer">
+    <div className="border border-gray-300 rounded-2xl p-3 cursor-pointer bg-white">
       <div className="flex gap-2  items-center">
         <h1 className="text-[20px] p-2 bg-gray-100 flex justify-center items-center rounded-2xl">
           {data.image}
