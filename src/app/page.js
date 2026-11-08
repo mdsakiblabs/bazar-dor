@@ -17,7 +17,7 @@ const page = async() => {
   })
   return (
     <div>
-     {/* <Hero/> */}
+     <Hero/>
      {/* <PriceHighSection data={highPriceProducts}/> */}
      {/* <PriceLowSection data={lowPriceProducts}/> */}
      {/* <AllProductSection data={data} length={data.length}/> */}
