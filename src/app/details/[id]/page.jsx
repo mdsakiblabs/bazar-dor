@@ -53,6 +53,7 @@ const Detailspage = async ({ params }) => {
     categoryIcon,
     unit,
     today,
+    yesterday,
     change,
     markets = [],
   } = data;
@@ -117,6 +118,21 @@ const Detailspage = async ({ params }) => {
 
               <p className="mt-1 text-xs text-gray-500">
                 {categoryNameBn} · {nameBn}
+              </p>
+              <p
+                className={`text-sm font-medium ${
+                  today > yesterday
+                    ? "text-red-600"
+                    : today < yesterday
+                      ? "text-green-600"
+                      : "text-gray-500"
+                }`}
+              >
+                {today > yesterday
+                  ? `গতকালের তুলনায় আজ দাম বেড়েছে ৳${(today - yesterday).toLocaleString("bn-BD")}`
+                  : today < yesterday
+                    ? `গতকালের তুলনায় আজ দাম কমেছে ৳${(yesterday - today).toLocaleString("bn-BD")}`
+                    : "গতকালের তুলনায় দামে কোনো পরিবর্তন নেই"}
               </p>
             </div>
           </div>
