@@ -9,8 +9,8 @@ const page = async ({ params }) => {
   const data = await res.json();
 
   return (
-    <div className="parent w-full mt-10">
-      <div className="wrapper max-w-270 mx-auto  ">
+    <div className="parent w-full mt-10 px-5 md:px-0">
+      <div className="wrapper md:max-w-270 mx-auto  ">
         {/* category name and image */}
         <div className="flex gap-2  items-center border border-gray-200 rounded-2xl p-3">
           <h1 className="text-[20px] p-2 bg-gray-100 flex justify-center items-center rounded-2xl">
@@ -45,7 +45,7 @@ const page = async ({ params }) => {
         </div>
 
         {/* cards */}
-        <div className="grid grid-cols-3 gap-5 ">
+        <div className="md:grid grid-cols-3 flex flex-col md:gap-5 gap-4">
           {data.map((elem, ind) => {
             return <ProductCard data={elem} key={ind} />;
           })}
