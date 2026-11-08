@@ -6,8 +6,8 @@ const PriceLowSection = ({data}) => {
 
 
   return (
-    <div className='w-full mt-15'>
-      <div className='max-w-270 mx-auto'>
+    <div className='w-full mt-15 px-5 md:px-0'>
+      <div className='md:max-w-270 mx-auto'>
         {/* title */}
         <div className='flex text-xl mb-3'>
             <span className='text-green-500'>▼</span>
@@ -15,7 +15,7 @@ const PriceLowSection = ({data}) => {
         </div>
 
         {/* cards */}
-        <div className='grid grid-cols-3 gap-4'>
+        <div className='md:grid grid-cols-3 flex flex-col gap-4'>
             {topSixProduct.map((elem,ind)=>{
                 return <ProductCard data={elem} key={ind}/>
             })}
