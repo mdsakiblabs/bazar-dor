@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SignInSignUpBtn from "../SignInSignUpBtn";
+import Link from "next/link";
 
 const Navbar = () => {
   const date = new Date().toLocaleDateString("bn-BD", {
@@ -10,6 +11,7 @@ const Navbar = () => {
     <div className="w-full px-3 sm:px-5">
       <div className="parent flex w-full max-w-270 mx-auto items-center justify-between gap-2 py-2 sm:py-3">
         {/* Logo and text */}
+        <Link href="/">
         <div className="flex min-w-0 items-center gap-1.5 sm:gap-2">
           <Image
             src="/icons8-shopping-cart-80.png"
@@ -29,6 +31,7 @@ const Navbar = () => {
             </h2>
           </div>
         </div>
+        </Link>
 
         {/* Authentication buttons / User profile */}
         <div className="shrink-0">
