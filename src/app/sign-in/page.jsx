@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
 import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
@@ -171,4 +171,12 @@ const SignInPage = () => {
   );
 };
 
-export default SignInPage;
+const SignInPageWithSuspense = () => {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#f0f5f0]" />}>
+      <SignInPage />
+    </Suspense>
+  );
+};
+
+export default SignInPageWithSuspense;
