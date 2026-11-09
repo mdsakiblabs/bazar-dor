@@ -1,36 +1,143 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# বাজার দর (Bazar Dor)
+
+**Bazar Dor** is a web application that helps users explore the prices of everyday essential goods in Bangladesh. It provides an easy way to check product prices, compare price changes over time, and stay informed about market trends.
+
+🌐 **Live Website:** [https://bazar-dor-plum-tau.vercel.app](https://bazar-dor-plum-tau.vercel.app)
+
+## Features
+
+- **Browse Products:** Explore a collection of everyday essential products.
+- **Category-based Browsing:** Find products by their respective categories.
+- **Product Details:** View detailed pricing information for individual products.
+- **Price Comparison:** Compare today's prices with previous prices, including yesterday, last week, and last month.
+- **Price Change Indicators:** Easily identify whether a product's price has increased, decreased, or remained unchanged.
+- **User Authentication:** Create an account and sign in using email and password.
+- **Social Authentication:** Sign in with Google or GitHub.
+- **Responsive Design:** Access the application from desktop, tablet, and mobile devices.
+
+## Tech Stack
+
+**Frontend**
+
+- Next.js
+- React
+- Tailwind CSS
+- JavaScript
+
+**Authentication**
+
+- Better Auth
+- Google OAuth
+- GitHub OAuth
+
+**Database**
+
+- MongoDB Atlas
+
+**Deployment**
+
+- Vercel
+
+**Additional Libraries**
+
+- React Hot Toast
+- React Fast Marquee
+
+**Product Data API:** Programming Hero Open API
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to run the project locally.
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/mdsakiblabs/bazar-dor.git
+```
+
+### 2. Navigate to the Project Directory
+
+```bash
+cd bazar-dor
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Configure Environment Variables
+
+Create a `.env` file in the root directory and add the following variables:
+
+```env
+MONGO_DB_URI=your_mongodb_connection_string
+
+BETTER_AUTH_SECRET=your_better_auth_secret
+BETTER_AUTH_URL=http://localhost:3000
+
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+```
+
+Replace the placeholder values with your actual credentials.
+
+### 5. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Authentication Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Bazar Dor uses Better Auth for authentication.
 
-## Learn More
+To enable social login, configure your Google and GitHub OAuth applications with the appropriate local and production callback URLs.
 
-To learn more about Next.js, take a look at the following resources:
+**Google Callback URL:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```text
+http://localhost:3000/api/auth/callback/google
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**GitHub Callback URL:**
 
-## Deploy on Vercel
+```text
+http://localhost:3000/api/auth/callback/github
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+For production, replace `http://localhost:3000` with your deployed domain.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Build for Production
+
+To create an optimized production build:
+
+```bash
+npm run build
+```
+
+To start the production server locally:
+
+```bash
+npm start
+```
+
+## Data Disclaimer
+
+Product prices are provided for informational purposes. Actual market prices may vary depending on location, market conditions, and availability.
+
+## Author
+
+**Md Sakib Hasan**
+
+- GitHub: [@mdsakiblabs](https://github.com/mdsakiblabs)
+
+---
+
+Built with ❤️ to make everyday market price information easier to access.
