@@ -82,7 +82,7 @@ const SignUpPage = () => {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center bg-[#f0f5f0] px-4 py-5 text-[#26352b] sm:py-8">
+    <main className="flex min-h-screen flex-col items-center bg-[#F3FBF4] px-4 py-5 text-[#26352b] sm:py-8">
       <header className="mb-6 text-center">
         <h1 className="text-2xl font-bold sm:text-3xl">অ্যাকাউন্ট তৈরি করুন</h1>
 

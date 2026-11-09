@@ -12,7 +12,7 @@ const page = async ({ params }) => {
     <div className="parent w-full mt-10 px-5 md:px-0">
       <div className="wrapper md:max-w-270 mx-auto  ">
         {/* category name and image */}
-        <div className="flex gap-2  items-center border border-gray-200 rounded-2xl p-3">
+        <div className="flex gap-2  items-center border border-gray-200 rounded-2xl p-3 bg-white">
           <h1 className="text-[20px] p-2 bg-gray-100 flex justify-center items-center rounded-2xl">
             {data[0].image}
           </h1>
@@ -27,7 +27,7 @@ const page = async ({ params }) => {
         </div>
 
         {/* filter */}
-        <div className="flex justify-end items-center my-5 border border-gray-200 rounded-2xl px-8 py-3">
+        <div className="flex justify-end items-center my-5 border border-gray-200 rounded-2xl px-8 py-3 bg-white">
           <div className="flex gap-2 items-center">
             <span className="font-light">সাজান</span>
             <span className="px-2 py-1 border border-gray-200 rounded-2xl cursor-pointer">
